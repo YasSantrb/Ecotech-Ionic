@@ -1,0 +1,7 @@
+{
+  "name": "EcoTech-Ionic",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
