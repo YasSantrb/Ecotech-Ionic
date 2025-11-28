@@ -1,0 +1,10 @@
+ion-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  form {
+    max-width: 360px;
+    margin: 0 auto;
+  }
+}
