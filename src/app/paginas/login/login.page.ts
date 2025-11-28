@@ -14,7 +14,7 @@ import { Auth } from 'src/app/services/auth';
   imports: [CommonModule, FormsModule, IonicModule],
 })
 export class LoginPage {
-  username: string = '';
+  email: string = '';
   password: string = '';
 
   constructor(
@@ -22,12 +22,12 @@ export class LoginPage {
     private auth: Auth) {}
 
   FazerLogin() {
-    if (!this.username || !this.password) {
+    if (!this.email || !this.password) {
       alert('Preencha todos os campos!');
       return;
     }
     this.auth.login({ 
-      email: this.username, 
+      email: this.email, 
       password: this.password })
       .subscribe({
       next: (res) => {
@@ -41,12 +41,12 @@ export class LoginPage {
   });
   
   
-    console.log('Usuário:', this.username);
+    console.log('Usuário:', this.email);
     console.log('Senha:', this.password);
 
 }
   IrParaCadastro() {
-    this.router.navigate(['/cadastro']);
+    this.router.navigate(['registro/']);
   }
 }
 

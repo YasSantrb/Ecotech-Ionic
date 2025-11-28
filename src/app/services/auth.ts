@@ -8,15 +8,15 @@ import { tap } from 'rxjs';
   providedIn: 'root',
 })
 export class Auth {
-  private apiurl = "http://127.0.0.1:8000/api";
+  private apiurl = " https://yassant2.pythonanywhere.com/api/";
   private tokenkey = "auth-token";
   constructor(private http : HttpClient) {};
 
 cadastro(data: any): Observable<any>{
-  return this.http.post(`${this.apiurl}/registro/`, data);
+  return this.http.post(`${this.apiurl}registro/`, data);
 }
 login(credentials: any): Observable<any>{
-  return this.http.post(`${this.apiurl}/login`, credentials).pipe(
+  return this.http.post(`${this.apiurl}login/`, credentials).pipe(
     tap((res:any) => {
     if(res.token){
       localStorage.setItem(this.tokenkey,res.token)
