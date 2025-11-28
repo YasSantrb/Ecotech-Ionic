@@ -11,7 +11,7 @@ import { Auth } from 'src/app/services/auth';
   standalone: true,
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.scss'],
-  imports: [CommonModule, FormsModule, IonicModule, Auth],
+  imports: [CommonModule, FormsModule, IonicModule],
 })
 export class LoginPage {
   username: string = '';
