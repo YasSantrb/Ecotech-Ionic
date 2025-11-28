@@ -36,7 +36,7 @@ export class LoginPage {
     },
     error: (err) => {
       console.log('Deu ruim', err);
-      alert('Credenciais Inválidas')
+      alert('Erro Desconhecido ao fazer login.');
     },
   });
   

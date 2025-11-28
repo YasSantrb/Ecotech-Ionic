@@ -13,7 +13,7 @@ export class Auth {
   constructor(private http : HttpClient) {};
 
 cadastro(data: any): Observable<any>{
-  return this.http.post(`${this.apiurl}/cadastrar/`, data);
+  return this.http.post(`${this.apiurl}/registro/`, data);
 }
 login(credentials: any): Observable<any>{
   return this.http.post(`${this.apiurl}/login`, credentials).pipe(

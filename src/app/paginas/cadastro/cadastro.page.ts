@@ -52,6 +52,5 @@ export class CadastroPage {
     console.log('CPF/CNPJ:', this.cpfCnpj);
     console.log('Telefone:', this.telefone);
 
-    alert('Cadastro realizado com sucesso!');
   }
 }
