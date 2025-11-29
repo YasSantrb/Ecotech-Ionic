@@ -7,11 +7,7 @@ export const routes: Routes = [
     loadComponent: () => import('./paginas/login/login.page').then( m => m.LoginPage)
   },
   {
-    path: 'login/',
-    loadComponent: () => import('./paginas/login/login.page').then( m => m.LoginPage)
-  },
-  {
-    path: 'registro/',
+    path: 'registro',
     loadComponent: () => import('./paginas/cadastro/cadastro.page').then( m => m.CadastroPage)
   },
   {

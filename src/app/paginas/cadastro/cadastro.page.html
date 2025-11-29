@@ -36,14 +36,21 @@
         required
       ></ion-input>
     </ion-item>
+        <ion-item>
+      <ion-label position="floating">Confirmar Senha</ion-label>
+      <ion-input
+        [(ngModel)]="confirmPassword"
+        name="confirmPassword"
+        type="password"
+        required
+      ></ion-input>
+    </ion-item>
 
     <ion-item>
       <ion-label position="floating">CEP</ion-label>
       <ion-input
         [(ngModel)]="cep"
         name="cep"
-        inputmode="numeric"
-        maxlength="8"
         required
       ></ion-input>
     </ion-item>
@@ -54,7 +61,7 @@
         [(ngModel)]="cpfCnpj"
         name="cpfCnpj"
         inputmode="numeric"
-        maxlength="14"
+        maxlength="11"
         required
       ></ion-input>
     </ion-item>

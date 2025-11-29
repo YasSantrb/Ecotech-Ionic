@@ -36,7 +36,7 @@ export class LoginPage {
     },
     error: (err) => {
       console.log('Deu ruim', err);
-      alert('Erro Desconhecido ao fazer login.');
+      alert('Erro ao fazer login. Código do erro: ' + err.status);
     },
   });
   
@@ -46,7 +46,7 @@ export class LoginPage {
 
 }
   IrParaCadastro() {
-    this.router.navigate(['registro/']);
+    this.router.navigate(['registro']);
   }
 }
 

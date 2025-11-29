@@ -8,7 +8,7 @@ import { tap } from 'rxjs';
   providedIn: 'root',
 })
 export class Auth {
-  private apiurl = " https://yassant2.pythonanywhere.com/api/";
+  private apiurl = "https://yassant2.pythonanywhere.com/api/";
   private tokenkey = "auth-token";
   constructor(private http : HttpClient) {};
 

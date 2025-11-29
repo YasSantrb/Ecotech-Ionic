@@ -16,6 +16,7 @@ export class CadastroPage {
   username: string = '';
   email: string = '';
   password: string = '';
+  confirmPassword: string = '';
   cep: string = '';
   cpfCnpj: string = '';
   telefone: string = '';
@@ -34,9 +35,12 @@ export class CadastroPage {
       username: this.username,
       email: this.email,
       password: this.password,
+      confirmar_senha: this.confirmPassword,
+      profile: {
       cep: this.cep,
-      cpfCnpj: this.cpfCnpj,
-      telefone: this.telefone})
+      cpf_cnpj: this.cpfCnpj,
+      telefone: this.telefone
+    }})
       .subscribe({
         next: (res) => {
           console.log('Cadastrado!',res);
@@ -48,6 +52,7 @@ export class CadastroPage {
     console.log('Nome de usuário:', this.username);
     console.log('E-mail:', this.email);
     console.log('Senha:', this.password);
+    console.log('Confirmar Senha:', this.confirmPassword);
     console.log('CEP:', this.cep);
     console.log('CPF/CNPJ:', this.cpfCnpj);
     console.log('Telefone:', this.telefone);
