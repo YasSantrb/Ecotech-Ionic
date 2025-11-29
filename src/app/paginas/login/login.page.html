@@ -1,40 +1,29 @@
-<ion-header>
-  <ion-toolbar color="primary">
-    <ion-title>Login</ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content class="ion-padding">
-
-  <form (ngSubmit)="FazerLogin()">
-
-    <ion-item>
+<ion-content class="login_background">
+  
+  <div class="login-card">
+    <ion-img src="/assets/imagens/logo2.png"></ion-img>
+    
+    <form (ngSubmit)="FazerLogin()">
+    <ion-item class="input">
       <ion-label position="floating">Usuário</ion-label>
-      <ion-input
-        [(ngModel)]="email"
-        name="email"
-        required
-      ></ion-input>
+      <ion-input [(ngModel)]="email" name="email" required></ion-input>
     </ion-item>
 
-    <ion-item>
+    <ion-item class="input">
       <ion-label position="floating">Senha</ion-label>
-      <ion-input
-        [(ngModel)]="password"
-        name="password"
-        type="password"
-        required
-      ></ion-input>
+      <ion-input [(ngModel)]="password" name="password" type="password" required></ion-input>
     </ion-item>
 
-    <ion-button expand="block" type="submit" class="ion-margin-top">
+    <ion-button class="ion-entrar-button" expand="block" type="submit">
       Entrar
     </ion-button>
 
-    <ion-button expand="block" fill="clear" (click)="IrParaCadastro()">
-      Criar conta
+    <ion-button class="ion-cadastro-button" expand="block" fill="clear" (click)="IrParaCadastro()">
+      Cadastre-se
     </ion-button>
 
   </form>
+
+  </div>
 
 </ion-content>

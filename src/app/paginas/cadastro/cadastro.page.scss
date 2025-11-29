@@ -1,3 +1,31 @@
+.cadastro-background{
+--background: white;
+}
+
+.cadastro-card{
+  background: white;
+  box-shadow: 0 4px 15px #00bf63;
+  text-align: center;
+  width: 85%;
+  margin: auto;
+  margin-top: 10%;
+  padding: 30px 20px;
+  border-radius: 30px;
+}
+.input{
+  border-radius: 10px;
+  margin-top: 15px;
+  --background: #ffffff;
+  --padding-start: 10px;
+  color: black;
+}
+
+.ion-entrar-button{
+  margin-top: 5%;
+  --background: #00bf63 ;
+  color: white;
+  font-size: medium;
+}
 ion-content {
   display: flex;
   flex-direction: column;
