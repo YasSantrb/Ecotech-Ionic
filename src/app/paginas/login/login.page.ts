@@ -32,7 +32,7 @@ export class LoginPage {
       .subscribe({
       next: (res) => {
       console.log('Logado!', res);
-      this.router.navigate(['/home']);
+      this.router.navigate(['/pontos-coleta']);
     },
     error: (err) => {
       console.log('Deu ruim', err);
