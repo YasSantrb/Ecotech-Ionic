@@ -1,33 +1,43 @@
+
 <ion-content>
   <div class="container">
     <h2>Pontos de Coleta</h2>
     <p>Veja os seus pontos de coleta</p>
 
-    <table>
-      <thead>
-        <tr>
-          <th>Rua</th>
-          <th>Bairro</th>
-          <th>CEP</th>
-          <th>Número</th>
-          <th>Telefone</th>
-          <th>Horário</th>
-          <th>Ações</th>
-        </tr>
-      </thead>
+    <ion-grid class="pontos-grid">
+      <ion-row class="header">
+        <ion-col><strong>Rua</strong></ion-col>
+        <ion-col><strong>Bairro</strong></ion-col>
+        <ion-col><strong>CEP</strong></ion-col>
+        <ion-col><strong>Número</strong></ion-col>
+        <ion-col><strong>Telefone</strong></ion-col>
+        <ion-col><strong>Horário</strong></ion-col>
+        <ion-col><strong>Ações</strong></ion-col>
+      </ion-row>
 
-      <tbody>
-        <tr *ngFor="let item of pontos">
-          <td>{{ item.rua }}</td>
-          <td>{{ item.bairro }}</td>
-          <td>{{ item.cep }}</td>
-          <td>{{ item.numero }}</td>
-          <td>{{ item.telefone }}</td>
-          <td>{{ item.horario_funcionamento }}</td>
-          <td>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+      <ion-row *ngFor="let item of pontos" class="linha">
+        <ion-col>{{ item.rua }}</ion-col>
+        <ion-col>{{ item.bairro }}</ion-col>
+        <ion-col>{{ item.cep }}</ion-col>
+        <ion-col>{{ item.numero }}</ion-col>
+        <ion-col>{{ item.telefone }}</ion-col>
+        <ion-col>{{ item.horario_funcionamento }}</ion-col>
+
+        <ion-col>
+          <ion-button 
+            size="small" 
+            fill="outline" 
+            (click)="AbrirDetalhes(item)">
+            Ver Detalhes
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <ion-button 
+      class="adicionar-ponto-button" 
+      expand="block" 
+      (click)="IrparaCriarPonto()">
+      Adicionar Novo Ponto de Coleta</ion-button>
+
   </div>
 </ion-content>

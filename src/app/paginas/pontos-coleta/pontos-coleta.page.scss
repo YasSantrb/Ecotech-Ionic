@@ -27,3 +27,71 @@ th {
 tr:last-child td {
   border-bottom: none;
 }
+.pontos-grid {
+  .header {
+    background: #f0f0f0;
+    border-bottom: 2px solid #ccc;
+    font-weight: bold;
+  }
+
+  .linha {
+    border-bottom: 1px solid #ddd;
+    align-items: center;
+  }
+
+  ion-col {
+    padding: 8px 4px;
+    font-size: 14px;
+  }
+}
+.my-alert {
+
+  .alert-wrapper {
+    border-radius: 16px !important;
+    background: #ffffff !important;
+    padding: 18px !important;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+  }
+
+  .alert-head {
+    text-align: center !important;
+    margin-bottom: 10px;
+  }
+
+  .alert-title {
+    font-size: 20px !important;
+    font-weight: 700 !important;
+    color: #333 !important;
+  }
+
+  .alert-message p {
+    margin: 6px 0 !important;
+    font-size: 15px;
+    color: #444;
+  }
+
+  .alert-button-group {
+    justify-content: space-between !important;
+  }
+
+  button.alert-button {
+    font-weight: bold !important;
+    font-size: 15px !important;
+    text-transform: none !important;
+  }
+
+  /* Botão excluir vermelho */
+  button.alert-button.role-destructive {
+    color: #e03131 !important;
+  }
+
+  /* Botão editar azul */
+  button.alert-button:not(.role-destructive):not(.role-cancel) {
+    color: #0b83ff !important;
+  }
+
+  /* Botão fechar cinza */
+  button.alert-button.role-cancel {
+    color: #555 !important;
+  }
+}

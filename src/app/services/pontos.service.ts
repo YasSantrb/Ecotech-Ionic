@@ -6,7 +6,7 @@ import { Auth } from './auth';
 
 @Injectable({ providedIn: 'root' })
 export class PontosService {
-  private apiUrl = "https://yassant2.pythonanywhere.com/api/pontos_coleta/";
+  private apiUrl = "https://yassant2.pythonanywhere.com/api/";
 
   constructor(
     private http: HttpClient,
@@ -27,7 +27,7 @@ export class PontosService {
     return this.http.get<any[]>(this.apiUrl, this.getHeader());
   }
   CriarPonto(data: any): Observable<any> {
-    return this.http.post<any>(this.apiUrl, data, this.getHeader());
+    return this.http.post<any>(`${this.apiUrl}meus_pontos_coleta/`, data, this.getHeader());
   }
   AtualizarPonto(id: number, data: any): Observable<any> {
     return this.http.patch<any>(`${this.apiUrl}${id}/`, data, this.getHeader());

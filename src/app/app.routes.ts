@@ -22,6 +22,10 @@ export const routes: Routes = [
   {
     path: 'pontos-coleta',
     loadComponent: () =>import('./paginas/pontos-coleta/pontos-coleta.page').then(m => m.PontosColetaPage)
+  },  {
+    path: 'criar-ponto',
+    loadComponent: () => import('./paginas/criar-ponto/criar-ponto.page').then( m => m.CriarPontoPage)
   }
+
 
 ];

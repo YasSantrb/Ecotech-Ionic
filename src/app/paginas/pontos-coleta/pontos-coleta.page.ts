@@ -4,12 +4,15 @@ import { Component, OnInit } from '@angular/core';
 import { IonicModule } from '@ionic/angular';
 import { CommonModule } from '@angular/common';
 import { PontosService } from '../../services/pontos.service';
-import { Auth } from 'src/app/services/auth';
 import { Router } from '@angular/router';
+import {AlertController} from '@ionic/angular';
+import { FormsModule } from '@angular/forms';
+import {provideIonicAngular} from '@ionic/angular/standalone';
+
 @Component({
   standalone: true,
   selector: 'app-pontos-coleta',
-  imports: [IonicModule, CommonModule],
+  imports: [IonicModule, CommonModule, FormsModule],
   templateUrl: './pontos-coleta.page.html',
   styleUrls: ['./pontos-coleta.page.scss']
 })
@@ -28,8 +31,8 @@ ngOnInit(): void {
 
   constructor(
     private router: Router,
-    private pontosService: PontosService, 
-    private auth: Auth) {}
+    private pontosService: PontosService,
+    private alertController: AlertController) {}
 
 
  Get_pontocoleta() {
@@ -42,28 +45,50 @@ ngOnInit(): void {
     });
   }
 
-  Criar_pontocoleta() {
-    if (!this.rua || !this.bairro || !this.cep || !this.numero || !this.telefone || !this.horario_funcionamento) {
-      alert('Preencha todos os campos!');
-      return;
-    }
-    this.pontosService.CriarPonto({
-      rua: this.rua,
-      bairro: this.bairro,
-      cep: this.cep,
-      numero: this.numero,
-      telefone: this.telefone,
-      horario_funcionamento: this.horario_funcionamento
-    })
-    .subscribe({
-      next: (res) => {
-        console.log('Ponto de coleta criado!', res);  
-        this.router.navigate(['/pontos-coleta']);
-      },
-      error: (err) => {
-        console.log('Erro ao criar ponto de coleta', err);
-        alert('Erro ao criar ponto de coleta. Código do erro: ' + err.status);
-      }
-    });
-}
+
+
+  async AbrirDetalhes(ponto: any) {
+    console.log('chamando alert...');
+    const alert = await this.alertController.create({
+      header: 'Detalhes do Ponto de Coleta',
+      cssClass: 'my-alert',
+      message:` 
+      <p><strong>Rua:</strong> ${ponto.rua}</p>
+      <p><strong>Bairro:</strong> ${ponto.bairro}</p>
+      <p><strong>CEP:</strong> ${ponto.cep}</p>
+      <p><strong>Número:</strong> ${ponto.numero}</p>
+      <p><strong>Telefone:</strong> ${ponto.telefone}</p>
+      <p><strong>Horário de Funcionamento:</strong> ${ponto.horario_funcionamento}</p>
+      `,
+      buttons: [
+            {
+              text: 'Fechar',
+              role: 'cancel'
+            },
+            {
+              text: 'Editar',
+              handler: () => this.pontosService.AtualizarPonto(ponto.id, {
+                rua: this.rua,
+                bairro: this.bairro,  
+                cep: this.cep,
+                numero: this.numero,
+                telefone: this.telefone,
+                horario_funcionamento: this.horario_funcionamento
+              }), 
+            },
+            {
+              text: 'Excluir',
+              role: 'destructive',
+              handler: () => this.pontosService.DeletarPonto(ponto.id).subscribe({
+              next: () => this.Get_pontocoleta(),
+              error: (err) => console.error('Erro ao excluir', err)
+        })
+      }      
+    ]});
+    await alert.present();
+
+  }
+  IrparaCriarPonto() {
+    this.router.navigate(['/criar-ponto']);
+  }
 }
