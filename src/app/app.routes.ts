@@ -25,6 +25,10 @@ export const routes: Routes = [
   },  {
     path: 'criar-ponto',
     loadComponent: () => import('./paginas/criar-ponto/criar-ponto.page').then( m => m.CriarPontoPage)
+  },
+  {
+    path: 'detalhes-pcoleta',
+    loadComponent: () => import('./paginas/detalhes-pcoleta/detalhes-pcoleta.page').then( m => m.DetalhesPcoletaPage)
   }
 
 
