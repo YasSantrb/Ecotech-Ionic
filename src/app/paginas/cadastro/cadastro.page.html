@@ -2,9 +2,9 @@
   
   <div class="cadastro-card">
     <ion-img src="/assets/imagens/logo2.png"></ion-img>
-      <form (ngSubmit)="Cadastrar()">
+    <form (ngSubmit)="Cadastrar()">
     <ion-item class="input">
-      <ion-label position="floating">Nome de Usuário</ion-label>
+      <ion-label position="stacked">Nome de Usuário</ion-label>
       <ion-input
         [(ngModel)]="username"
         name="username"
@@ -13,7 +13,7 @@
     </ion-item>
 
     <ion-item class="input">
-      <ion-label position="floating">E-mail</ion-label>
+      <ion-label position="stacked">E-mail</ion-label>
       <ion-input
         [(ngModel)]="email"
         name="email"
@@ -23,7 +23,7 @@
     </ion-item>
 
     <ion-item class="input">
-      <ion-label position="floating">Senha</ion-label>
+      <ion-label position="stacked">Senha</ion-label>
       <ion-input
         [(ngModel)]="password"
         name="password"
@@ -32,7 +32,7 @@
       ></ion-input>
     </ion-item>
         <ion-item class="input">
-      <ion-label position="floating">Confirmar Senha</ion-label>
+      <ion-label position="stacked">Confirmar Senha</ion-label>
       <ion-input
         [(ngModel)]="confirmPassword"
         name="confirmPassword"
@@ -42,7 +42,7 @@
     </ion-item>
 
     <ion-item class="input">
-      <ion-label position="floating">CEP</ion-label>
+      <ion-label position="stacked">CEP</ion-label>
       <ion-input
         [(ngModel)]="cep"
         name="cep"
@@ -51,7 +51,7 @@
     </ion-item>
 
     <ion-item class="input">
-      <ion-label position="floating">CPF/CNPJ</ion-label>
+      <ion-label position="stacked">CPF/CNPJ</ion-label>
       <ion-input
         [(ngModel)]="cpfCnpj"
         name="cpfCnpj"
@@ -62,7 +62,7 @@
     </ion-item>
 
     <ion-item class="input">
-      <ion-label position="floating">Telefone</ion-label>
+      <ion-label position="stacked">Telefone</ion-label>
       <ion-input
         [(ngModel)]="telefone"
         name="telefone"

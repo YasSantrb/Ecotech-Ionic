@@ -1,0 +1,37 @@
+.background-Pontos{
+  --background: url("/assets/imagens/fundo_login_cadastro.jpg");
+}
+.input{
+  border-radius: 10px;
+  margin-top: 5px;
+  --background: #00bf631f;
+  --padding-start: 10px;
+  color: black;
+}
+.formulario{
+  background: white;
+  padding: 10px;
+  box-shadow: 0 4px 15px #00bf63;
+  width: 90%;
+  border-radius: 20px;
+  margin: auto;
+}
+.texto{
+  color: black;
+  text-align: center;
+}
+.imagem{
+  height: 20vh;
+}
+.botao{
+  color: white;
+  background: #00bf63;
+  border-bottom: 4px solid #036e3a;
+  border-radius: 20px;
+  font-weight: bold;  
+}
+.botao:hover{
+  transition: 0.3s;
+  background: #036e3a;
+
+}

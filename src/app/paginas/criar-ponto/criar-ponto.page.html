@@ -1,88 +1,44 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>Criar Ponto</ion-title>
-  </ion-toolbar>
-</ion-header>
 
-<ion-content [fullscreen]="true" class="ion-padding">
-  <form (ngSubmit)="Criar_pontocoleta()" #pontoForm="ngForm" novalidate>
+<ion-content class="background-Pontos">
+  <ion-img  class="imagem"  src="/assets/imagens/criarPontoImagem.png"></ion-img>
+  <form class="formulario"  color="null" (ngSubmit)="Criar_pontocoleta()" #pontoForm="ngForm" novalidate>
 
-    <ion-item>
-      <ion-label position="floating">Rua</ion-label>
-      <ion-input
-        name="rua"
-        required
-        [(ngModel)]="rua"
-        type="text"
+    <ion-item class="input">
+      <ion-label position="stacked">Rua</ion-label>
+      <ion-input name="rua" required [(ngModel)]="rua" type="text"></ion-input>
+    </ion-item>
+
+    <ion-item class="input">
+      <ion-label position="stacked">Bairro</ion-label>
+      <ion-input name="bairro" required [(ngModel)]="bairro" type="text"></ion-input>
+    </ion-item>
+
+    <ion-item class="input">
+      <ion-label position="stacked">CEP</ion-label>
+      <ion-input name="cep" required [(ngModel)]="cep" type="text" maxlength="9" placeholder="00000-000" inputmode="numeric" 
       ></ion-input>
     </ion-item>
 
-    <ion-item>
-      <ion-label position="floating">Bairro</ion-label>
-      <ion-input
-        name="bairro"
-        required
-        [(ngModel)]="bairro"
-        type="text"
-      ></ion-input>
+    <ion-item class="input">
+      <ion-label position="stacked">Número</ion-label>
+      <ion-input name="numero" required [(ngModel)]="numero" type="text" inputmode="numeric"></ion-input>
     </ion-item>
 
-    <ion-item>
-      <ion-label position="floating">CEP</ion-label>
-      <ion-input
-        name="cep"
-        required
-        [(ngModel)]="cep"
-        type="text"
-        maxlength="9"
-        inputmode="numeric"
-        placeholder="00000-000"
-      ></ion-input>
+    <ion-item class="input">
+      <ion-label position="stacked">Telefone</ion-label>
+      <ion-input name="telefone" required [(ngModel)]="telefone" type="tel" maxlength="15" placeholder="(00) 00000-0000" inputmode="tel"></ion-input>
     </ion-item>
 
-    <ion-item>
-      <ion-label position="floating">Número</ion-label>
-      <ion-input
-        name="numero"
-        required
-        [(ngModel)]="numero"
-        type="text"
-        inputmode="numeric"
-      ></ion-input>
-    </ion-item>
-
-    <ion-item>
-      <ion-label position="floating">Telefone</ion-label>
-      <ion-input
-        name="telefone"
-        required
-        [(ngModel)]="telefone"
-        type="tel"
-        maxlength="15"
-        placeholder="(00) 00000-0000"
-        inputmode="tel"
-      ></ion-input>
-    </ion-item>
-
-    <ion-item>
+    <ion-item class="input">
       <ion-label position="stacked">Horário de funcionamento</ion-label>
       <div style="display:flex; gap:12px; width:100%; padding:8px 0;">
-        <ion-input
-          name="horario_funcionamento"
-          required
-          [(ngModel)]="horario_funcionamento"
-          type="text"
-        ></ion-input>
-
-
+        <ion-input name="horario_funcionamento" required [(ngModel)]="horario_funcionamento" type="text"></ion-input>
       </div>
     </ion-item>
-
-
-
-    <ion-button expand="block" type="submit">
-      Salvar ponto
-    </ion-button>
-
+    <ion-button color="null" class="botao" expand="block" type="submit"> Salvar ponto </ion-button>
   </form>
 </ion-content>
+
+
+
+

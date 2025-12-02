@@ -1,8 +1,7 @@
 
-<ion-content>
+<ion-content class="background-Pontos">
   <div class="container">
-    <h2>Pontos de Coleta</h2>
-    <p>Veja os seus pontos de coleta</p>
+    <ion-img src="/assets/imagens/pontos_de_coleta.png"></ion-img>
 
     <ion-grid class="pontos-grid">
       <ion-row class="header">
@@ -12,7 +11,6 @@
         <ion-col><strong>Número</strong></ion-col>
         <ion-col><strong>Telefone</strong></ion-col>
         <ion-col><strong>Horário</strong></ion-col>
-        <ion-col><strong>Ações</strong></ion-col>
       </ion-row>
 
       <ion-row *ngFor="let item of pontos" class="linha">
@@ -22,22 +20,12 @@
         <ion-col>{{ item.numero }}</ion-col>
         <ion-col>{{ item.telefone }}</ion-col>
         <ion-col>{{ item.horario_funcionamento }}</ion-col>
-
+        
         <ion-col>
-          <ion-button 
-            size="small" 
-            fill="outline" 
-            (click)="AbrirDetalhes(item)">
-            Ver Detalhes
-          </ion-button>
+          <ion-button  color ="warning"size="small" fill="outline" (click)="AbrirDetalhes(item)">Ver Detalhes</ion-button>
         </ion-col>
       </ion-row>
     </ion-grid>
-    <ion-button 
-      class="adicionar-ponto-button" 
-      expand="block" 
-      (click)="IrparaCriarPonto()">
-      Adicionar Novo Ponto de Coleta</ion-button>
-
+    <ion-button  color = "null" class="botao" expand="block" (click)="IrparaCriarPonto()">Adicionar Novo Ponto de Coleta</ion-button>
   </div>
 </ion-content>

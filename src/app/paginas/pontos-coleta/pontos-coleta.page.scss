@@ -1,42 +1,58 @@
-.container {
-  padding: 16px;
-  text-align: center;
+.background-Pontos{
+  --background: url("/assets/imagens/fundo_login_cadastro.jpg");
 }
-// #00bf63;
-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 20px;
+
+.botao{
+  color: white;
+  background: #00bf63;
+  border-bottom: 4px solid #036e3a;
+  border-radius: 20px;
+  font-weight: bold;  
+}
+.botao:hover{
+  transition: 0.3s;
+  background: #036e3a;
+
+}
+.container {
+  padding: 15px;
+  text-align:center;
   color: black;
-  border-radius: 12px;
-  overflow: hidden;
 }
 
 th, td {
   padding: 12px;
   border-bottom: 1px solid #ccc;
   text-align: center;
-  color: white;
+  color: black
 }
 
 th {
   background: #f5f5f5;
   font-weight: bold;
+  
 }
 
 tr:last-child td {
   border-bottom: none;
 }
 .pontos-grid {
+  box-shadow: 0px 5px 11px #00bf63;
+  background: rgb(255, 255, 255);
+  margin-bottom: 30px;
+  border-radius: 20px;
   .header {
-    background: #f0f0f0;
-    border-bottom: 2px solid #ccc;
-    font-weight: bold;
+    background: #00bf63;
+    border-bottom: 4px solid #036e3a;
+    font-weight: bold;  
+    border-radius: 15px;
+    color: white;
   }
 
   .linha {
     border-bottom: 1px solid #ddd;
     align-items: center;
+    font-weight:lighter
   }
 
   ion-col {

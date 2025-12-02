@@ -53,12 +53,12 @@ ngOnInit(): void {
       header: 'Detalhes do Ponto de Coleta',
       cssClass: 'my-alert',
       message:` 
-      <p><strong>Rua:</strong> ${ponto.rua}</p>
-      <p><strong>Bairro:</strong> ${ponto.bairro}</p>
-      <p><strong>CEP:</strong> ${ponto.cep}</p>
-      <p><strong>Número:</strong> ${ponto.numero}</p>
-      <p><strong>Telefone:</strong> ${ponto.telefone}</p>
-      <p><strong>Horário de Funcionamento:</strong> ${ponto.horario_funcionamento}</p>
+      Rua: ${ponto.rua}
+      Bairro: ${ponto.bairro}
+      CEP: ${ponto.cep}
+      Número:${ponto.numero}
+      Telefone: ${ponto.telefone}
+      Horário de Funcionamento: ${ponto.horario_funcionamento}
       `,
       buttons: [
             {
