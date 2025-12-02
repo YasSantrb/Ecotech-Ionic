@@ -47,47 +47,7 @@ ngOnInit(): void {
 
 
 
-  async AbrirDetalhes(ponto: any) {
-    console.log('chamando alert...');
-    const alert = await this.alertController.create({
-      header: 'Detalhes do Ponto de Coleta',
-      cssClass: 'my-alert',
-      message:` 
-      Rua: ${ponto.rua}
-      Bairro: ${ponto.bairro}
-      CEP: ${ponto.cep}
-      Número:${ponto.numero}
-      Telefone: ${ponto.telefone}
-      Horário de Funcionamento: ${ponto.horario_funcionamento}
-      `,
-      buttons: [
-            {
-              text: 'Fechar',
-              role: 'cancel'
-            },
-            {
-              text: 'Editar',
-              handler: () => this.pontosService.AtualizarPonto(ponto.id, {
-                rua: this.rua,
-                bairro: this.bairro,  
-                cep: this.cep,
-                numero: this.numero,
-                telefone: this.telefone,
-                horario_funcionamento: this.horario_funcionamento
-              }), 
-            },
-            {
-              text: 'Excluir',
-              role: 'destructive',
-              handler: () => this.pontosService.DeletarPonto(ponto.id).subscribe({
-              next: () => this.Get_pontocoleta(),
-              error: (err) => console.error('Erro ao excluir', err)
-        })
-      }      
-    ]});
-    await alert.present();
 
-  }
 AbrirDetalhes(item: any) {
   this.router.navigate(['/detalhes-pcoleta'], { state: { item } });
 }

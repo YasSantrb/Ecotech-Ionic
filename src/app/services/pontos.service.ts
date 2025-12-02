@@ -30,10 +30,10 @@ export class PontosService {
     return this.http.post<any>(`${this.apiUrl}meus_pontos_coleta/`, data, this.getHeader());
   }
   AtualizarPonto(id: number, data: any): Observable<any> {
-    return this.http.patch<any>(`${this.apiUrl}pontos_coleta/${id}`, data, this.getHeader());
+    return this.http.patch<any>(`${this.apiUrl}meus_pontos_coleta/${id}/`, data, this.getHeader());
   }
   DeletarPonto(id: any): Observable<any> {
-    return this.http.delete<any>(`${this.apiUrl}pontos_coleta/${id}/`, this.getHeader());
+    return this.http.delete<any>(`${this.apiUrl}meus_pontos_coleta/${id}/`, this.getHeader());
   }
 
 
