@@ -88,7 +88,20 @@ ngOnInit(): void {
     await alert.present();
 
   }
+AbrirDetalhes(item: any) {
+  this.router.navigate(['/detalhes-pcoleta'], { state: { item } });
+}
   IrparaCriarPonto() {
     this.router.navigate(['/criar-ponto']);
   }
+  ionViewWillEnter() {
+  this.CarregarPontos();
+}
+
+CarregarPontos() {
+  this.pontosService.ListarPontos().subscribe((res) => {
+    this.pontos = res;
+  });
+}
+
 }
