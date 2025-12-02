@@ -1,13 +1,31 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>feed-doacoes</ion-title>
-  </ion-toolbar>
+<ion-header>
+<ion-toolbar>
+<ion-title>Doações</ion-title>
+</ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">feed-doacoes</ion-title>
-    </ion-toolbar>
-  </ion-header>
+
+<ion-content [fullscreen]>
+<div class="feed-container">
+<ng-container *ngIf="doacoes && doacoes.length > 0; else vazio">
+<ion-card *ngFor="let d of doacoes" class="card" (click)="abrirDetalhes(d.id)">
+<div class="card-media">
+<img [src]="d.foto_url || placeholder" alt="{{ d.nome_doacao }}" />
+</div>
+
+
+<ion-card-content class="card-info" >
+<div class="nome">{{ d.nome_doacao }}</div>
+<div class="estado">{{ d.condicao }}</div>
+</ion-card-content>
+
+
+</ion-card>
+</ng-container>
+
+
+<ng-template #vazio>
+<div class="vazio">Nenhuma doação encontrada.</div>
+</ng-template>
+</div>
 </ion-content>
