@@ -33,11 +33,17 @@ p{
  color: #000000;
 }
 
-.ion-entrar-button{
-  margin-top: 5%;
-  --background: #00bf63 ;
+.botao{
   color: white;
-  font-size: medium;
+  background: #00bf63;
+  border-bottom: 4px solid #036e3a;
+  border-radius: 20px;
+  font-weight: bold;  
+  margin-top: 10px;
+}
+.botao:hover{
+  transition: 0.3s;
+  background: #036e3a;
 }
 .ion-cadastro-button{
   color: black;

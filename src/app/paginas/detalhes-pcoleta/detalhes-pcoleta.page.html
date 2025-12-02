@@ -1,12 +1,10 @@
-<ion-content>
+<ion-content class="detalhes_background">
   <div class="container">
+    <ion-img src="/assets/imagens/detalhes_ponto.png" class="imagem"></ion-img>
 
-    <h2>Detalhes do Ponto de Coleta</h2>
-    <p>Aqui estão as informações completas do ponto selecionado.</p>
-
-    <ion-card *ngIf="ponto">
+    <ion-card class="card_menu" *ngIf="ponto">
       <ion-card-header>
-        <ion-card-title>
+        <ion-card-title class="titulo">
           {{ editando ? 'Editando Ponto' : ponto.rua + ', Nº ' + ponto.numero }}
         </ion-card-title>
 
@@ -15,44 +13,43 @@
         </ion-card-subtitle>
       </ion-card-header>
 
-      <ion-card-content>
-
+      <ion-card-content >
         <!-- VISUAL -->
-        <ng-container *ngIf="!editando">
-          <ion-item>
+        <ng-container class="card_secundario" *ngIf="!editando">
+          <ion-item class="info" color="null">
             <ion-label>Rua</ion-label>
-            <ion-note slot="end">{{ ponto.rua }}</ion-note>
+            <ion-note class="notas" slot="end">{{ ponto.rua }}</ion-note>
           </ion-item>
 
-          <ion-item>
+          <ion-item class="info" color="null">
             <ion-label>Bairro</ion-label>
-            <ion-note slot="end">{{ ponto.bairro }}</ion-note>
+            <ion-note class="notas" slot="end">{{ ponto.bairro }}</ion-note>
           </ion-item>
 
-          <ion-item>
+          <ion-item class="info" color="null">
             <ion-label>CEP</ion-label>
-            <ion-note slot="end">{{ ponto.cep }}</ion-note>
+            <ion-note class="notas" slot="end">{{ ponto.cep }}</ion-note>
           </ion-item>
 
-          <ion-item>
+          <ion-item class="info" color="null">
             <ion-label>Número</ion-label>
-            <ion-note slot="end">{{ ponto.numero }}</ion-note>
+            <ion-note class="notas" slot="end">{{ ponto.numero }}</ion-note>
           </ion-item>
 
-          <ion-item>
+          <ion-item class="info" color="null">
             <ion-label>Telefone</ion-label>
-            <ion-note slot="end">{{ ponto.telefone }}</ion-note>
+            <ion-note class="notas" slot="end">{{ ponto.telefone }}</ion-note>
           </ion-item>
 
-          <ion-item>
+          <ion-item class="info" color="null">
             <ion-label>Horário</ion-label>
-            <ion-note slot="end">{{ ponto.horario_funcionamento }}</ion-note>
+            <ion-note class="notas" slot="end">{{ ponto.horario_funcionamento }}</ion-note>
           </ion-item>
 
-          <ion-button expand="block" color="primary" (click)="Editarponto()">
+          <ion-button class="botao" color="null" expand="block" (click)="Editarponto()">
             Editar
           </ion-button>
-          <ion-button expand="block" fill="outline" color="danger" (click)="ExcluirPonto()">
+          <ion-button class="botao_remover" color="null" expand="block"  (click)="ExcluirPonto()">
             Deletar
           </ion-button>
         </ng-container>
@@ -60,41 +57,41 @@
         <!-- EDIÇÃO -->
         <ng-container *ngIf="editando">
 
-          <ion-item>
+          <ion-item class="info" color="null">
             <ion-label position="floating">Rua</ion-label>
             <ion-input [(ngModel)]="ponto.rua"></ion-input>
           </ion-item>
 
-          <ion-item>
+          <ion-item class="info" color="null">
             <ion-label position="floating">Bairro</ion-label>
             <ion-input [(ngModel)]="ponto.bairro"></ion-input>
           </ion-item>
 
-          <ion-item>
+          <ion-item class="info" color="null">
             <ion-label position="floating">CEP</ion-label>
             <ion-input [(ngModel)]="ponto.cep"></ion-input>
           </ion-item>
 
-          <ion-item>
+          <ion-item class="info" color="null">
             <ion-label position="floating">Número</ion-label>
             <ion-input [(ngModel)]="ponto.numero"></ion-input>
           </ion-item>
 
-          <ion-item>
+          <ion-item class="info" color="null">
             <ion-label position="floating">Telefone</ion-label>
             <ion-input [(ngModel)]="ponto.telefone"></ion-input>
           </ion-item>
 
-          <ion-item>
+          <ion-item class="info" color="null">
             <ion-label position="floating">Horário</ion-label>
             <ion-input [(ngModel)]="ponto.horario_funcionamento"></ion-input>
           </ion-item>
 
-          <ion-button expand="block" color="success" (click)="SalvarAlteracoes()">
+          <ion-button expand="block" class="botao" color="null" (click)="SalvarAlteracoes()">
             Salvar
           </ion-button>
 
-          <ion-button expand="block" fill="outline" color="medium" (click)="Cancelaredicao()">
+          <ion-button expand="block" class="botao_remover" color="null" (click)="Cancelaredicao()">
             Cancelar
           </ion-button>
 

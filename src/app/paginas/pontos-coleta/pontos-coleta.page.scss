@@ -12,6 +12,18 @@
 .botao:hover{
   transition: 0.3s;
   background: #036e3a;
+}
+.botao_detalhe{
+  color: rgb(0, 0, 0);
+  background: #fffb03;
+  border-bottom: 4px solid #8a8703;
+  border-radius: 20px;
+  font-weight: bold;  
+}
+.botao_detalhe:hover{
+  color: white;
+  background:#8a8703;
+  transition: 0.3s;
 
 }
 .container {

@@ -20,11 +20,16 @@
   color: black;
 }
 
-.ion-entrar-button{
-  margin-top: 5%;
-  --background: #00bf63 ;
+.botao{
   color: white;
-  font-size: medium;
+  background: #00bf63;
+  border-bottom: 4px solid #036e3a;
+  border-radius: 20px;
+  font-weight: bold;  
+}
+.botao:hover{
+  transition: 0.3s;
+  background: #036e3a;
 }
 ion-content {
   display: flex;
