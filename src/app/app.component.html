@@ -1,3 +1,73 @@
 <ion-app>
-  <ion-router-outlet></ion-router-outlet>
+  <ion-menu
+    contentId="main-content"
+    side="start"
+    menuId="main-menu"
+    type="overlay"
+  >
+    <ion-content>
+      <ion-list id="inbox-list">
+        <div class="info_usuario ion-padding">
+          <ion-avatar class="avatar_perfil">
+            <img alt="Foto de Perfil" src="/assets/imagens/woman.png" />
+          </ion-avatar>
+          <div class="conteudo_usuario">
+            <h1 class="titulo_lista">{{ userName }}</h1>
+            <ion-note class="nota_lista">{{ userRole }}</ion-note>
+            <ion-note class="nota_lista">{{ userEmail }}</ion-note>
+          </div>
+        </div>
+
+        <ion-menu-toggle
+          auto-hide="false"
+          *ngFor="let p of appPages; let i = index"
+        >
+          <ion-item
+            (click)="navegar(p.url)"
+            lines="none"
+            detail="false"
+            routerLinkActive="selected"
+          >
+            <ion-icon
+              aria-hidden="true"
+              slot="start"
+              [name]="p.icon + '-outline'"
+            ></ion-icon>
+            <ion-label>{{ p.title }}</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+
+        <ion-menu-toggle auto-hide="false" *ngIf="isDoador">
+          <ion-item
+            (click)="navegar('/criar-doacao')"
+            lines="none"
+            detail="false"
+          >
+            <ion-icon name="add-circle-outline" slot="start"></ion-icon>
+            <ion-label>Minhas Doações</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+
+        <ion-menu-toggle auto-hide="false" *ngIf="isEmpresa">
+          <ion-item
+            (click)="navegar('/criar-ponto')"
+            lines="none"
+            detail="false"
+          >
+            <ion-icon name="business-outline" slot="start"></ion-icon>
+            <ion-label>Criar Ponto de Coleta</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+
+        <ion-menu-toggle auto-hide="false">
+          <ion-item (click)="logout()" lines="none" detail="false">
+            <ion-icon name="log-out-outline" slot="start"></ion-icon>
+            <ion-label>Sair</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+      </ion-list>
+    </ion-content>
+  </ion-menu>
+
+  <ion-router-outlet id="main-content"></ion-router-outlet>
 </ion-app>

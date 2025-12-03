@@ -1,4 +1,12 @@
-
+<div class="ion-page">
+  <ion-header>
+    <ion-toolbar class="info">
+      <ion-buttons slot="start"
+        ><ion-menu-button menu="main-menu"></ion-menu-button>
+      </ion-buttons>
+      <ion-title>Pontos de Coleta</ion-title>
+    </ion-toolbar>
+  </ion-header>
 <ion-content class="background-Pontos">
   <div class="container">
     <ion-img src="/assets/imagens/pontos_de_coleta.png"></ion-img>
@@ -21,11 +29,12 @@
         <ion-col>{{ item.telefone }}</ion-col>
         <ion-col>{{ item.horario_funcionamento }}</ion-col>
         
-        <ion-col>
+        <ion-col *ngIf="isEmpresa">
           <ion-button class="botao_detalhe" color ="null"size="small" (click)="AbrirDetalhes(item)">Ver Detalhes</ion-button>
         </ion-col>
       </ion-row>
     </ion-grid>
-    <ion-button  color = "null" class="botao" expand="block" (click)="IrparaCriarPonto()">Adicionar Novo Ponto de Coleta</ion-button>
   </div>
 </ion-content>
+</div>
+

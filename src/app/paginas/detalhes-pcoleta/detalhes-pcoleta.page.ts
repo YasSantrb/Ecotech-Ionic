@@ -28,7 +28,7 @@ export class DetalhesPcoletaPage implements OnInit {
   ngOnInit() {
     const nav = this.router.getCurrentNavigation();
     if (nav?.extras?.state) {
-      this.ponto = nav.extras.state['item'];  // recebe o objeto
+      this.ponto = nav.extras.state['item'];  
     }
   }
  Voltar() {

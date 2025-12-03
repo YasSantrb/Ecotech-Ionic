@@ -23,7 +23,10 @@ export class PontosService {
     };
   }
 
-  ListarPontos(): Observable<any[]> {
+  ListarTodosPontos(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}todos_pontos_coleta/`, this.getHeader());
+  }
+  ListarMeusPontos(): Observable<any[]> {
     return this.http.get<any[]>(`${this.apiUrl}meus_pontos_coleta/`, this.getHeader());
   }
   CriarPonto(data: any): Observable<any> {

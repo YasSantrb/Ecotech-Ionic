@@ -3,7 +3,8 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { DoacoesService } from '../../services/doacoes.service';
-import { IonicModule } from '@ionic/angular';
+import { IonicModule, MenuController} from '@ionic/angular';
+import { Auth } from '../../services/auth';
 
 @Component({
   selector: 'app-feed-doacoes',
@@ -17,12 +18,16 @@ export class FeedDoacoesPage {
   loading: boolean = true;
   placeholder = 'assets/imagens/placeholder.jpg';
 
+  isDoador: boolean = false;
+  isEmpresa: boolean = false;
 
   constructor(
     private Doacoes: DoacoesService,
-    private router: Router
+    private authService: Auth,
+    private router: Router,
   ) { }
   ionViewWillEnter() {
+  this.verificarFuncaoDoUsuario();
   this.carregar();
   }
   carregar() {
@@ -45,7 +50,19 @@ export class FeedDoacoesPage {
   this.router.navigate(['/criar-doacao']);
 }
 
+verificarFuncaoDoUsuario() {
+    const userRole = this.authService.getUserRole(); 
 
+    if (userRole === 'DOADOR') {
+      this.isDoador = true;
+      this.isEmpresa = false;
+    } else if (userRole === 'EMPRESA') {
+      this.isEmpresa = true;
+      this.isDoador = false;
+    }
+  }
 
-
+  verDetalhes(doacaoId: number) {
+    this.router.navigate(['/detalhes-doacao', doacaoId]);
+  }
 }

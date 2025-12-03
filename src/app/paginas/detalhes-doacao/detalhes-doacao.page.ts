@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { IonicModule } from '@ionic/angular';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DoacoesService } from '../../services/doacoes.service';
-import { IonContent, IonHeader, IonTitle, IonToolbar, IonButton, IonCard, IonCardHeader, IonCardContent } from '@ionic/angular/standalone';
+import { AlertController, ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-detalhes-doacao',
@@ -11,9 +12,7 @@ import { IonContent, IonHeader, IonTitle, IonToolbar, IonButton, IonCard, IonCar
   styleUrls: ['./detalhes-doacao.page.scss'],
   standalone: true,
   imports: [
-    IonContent, IonHeader, IonTitle, IonToolbar,
-    IonButton, IonCard, IonCardHeader, IonCardContent,
-    CommonModule, FormsModule
+    CommonModule, FormsModule, IonicModule
   ]
 })
 export class DetalhesDoacaoPage implements OnInit {
@@ -26,8 +25,10 @@ export class DetalhesDoacaoPage implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private doacoesService: DoacoesService,
-    private router: Router
-  ) {}
+    private router: Router,
+    private alertController: AlertController, // Adicione este
+    private toastController: ToastController // Adicione este
+    ) {}
 
   ngOnInit() {
     const id = Number(this.route.snapshot.paramMap.get('id'));
@@ -42,9 +43,49 @@ export class DetalhesDoacaoPage implements OnInit {
     this.router.navigate(['/editar-doacao', this.doacao.id]);
   }
 
-  excluir() {
-    this.doacoesService.DeletarDoacao(this.doacao.id).subscribe(() => {
-      this.router.navigate(['/feed-doacoes']);
+  async presentToast(message: string, color: string = 'primary') {
+    const toast = await this.toastController.create({
+      message: message,
+      duration: 2000,
+      color: color,
+      position: 'bottom'
+    });
+    await toast.present();
+  }
+  
+  async excluir() {
+    const alert = await this.alertController.create({
+      header: 'Confirmação',
+      message: 'Tem certeza que deseja excluir esta doação? Esta ação não pode ser desfeita.',
+      buttons: [
+        {
+          text: 'Cancelar',
+          role: 'cancel'
+        },
+        {
+          text: 'Excluir',
+          handler: () => {
+            this.confirmarExclusao(); 
+          }
+        }
+      ]
+    });
+
+    await alert.present();
+  }
+
+  confirmarExclusao() {
+    if (!this.doacao?.id) return;
+
+    this.doacoesService.DeletarDoacao(this.doacao.id).subscribe({
+      next: () => {
+        this.presentToast('Doação excluída com sucesso!', 'success');
+        this.router.navigate(['/feed-doacoes']); 
+      },
+      error: (err) => {
+        this.presentToast('Erro ao excluir a doação.', 'danger');
+        console.error('Erro de deleção:', err);
+      }
     });
   }
 }

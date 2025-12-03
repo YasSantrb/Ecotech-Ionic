@@ -1,33 +1,36 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>{{doacao.nome_doacao}}</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-back-button text="Voltar" default-href="/feed-doacoes"></ion-back-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
 
 <ion-content>
-
   <ion-card *ngIf="doacao">
-
     <img [src]="doacao.foto_url ? doacao.foto_url : placeholder" />
 
     <ion-card-header>
-      <h2>{{ doacao.nome_doacao }}</h2>
-      <p>Condição: {{ doacao.condicao }}</p>
+      <h2>{{ doacao?.nome_doacao }}</h2>
+      <p>Condição: {{ doacao?.condicao }}</p>
     </ion-card-header>
 
     <ion-card-content>
-      <p><strong>Especificação:</strong> {{ doacao.especificacao || '—' }}</p>
-      <p><strong>Endereço:</strong> {{ doacao.endereco || '—' }}</p>
-      <p><strong>Descrição Geral:</strong> {{ doacao.descricao_geral || '—' }}</p>
-      <p><strong>Observação:</strong> {{ doacao.observacao || '—' }}</p>
+      <p><strong>Especificação:</strong> {{ doacao?.especificacao || '—' }}</p>
+      <p><strong>Endereço:</strong> {{ doacao?.endereco || '—' }}</p>
+      <p>
+        <strong>Descrição Geral:</strong> {{ doacao?.descricao_geral || '—' }}
+      </p>
+      <p><strong>Observação:</strong> {{ doacao?.observacao || '—' }}</p>
     </ion-card-content>
-
   </ion-card>
 
-  <!-- Se for dono, mostra botões -->
-  <div *ngIf="isOwner" style="padding: 16px;">
-    <ion-button expand="block" color="primary" (click)="editar()">Editar</ion-button>
-    <ion-button expand="block" color="danger" (click)="excluir()">Excluir</ion-button>
+  <div *ngIf="isOwner" style="padding: 16px">
+    <ion-button expand="block" color="primary" (click)="editar()"
+      >Editar</ion-button
+    >
+    <ion-button expand="block" color="danger" (click)="excluir()"
+      >Excluir</ion-button
+    >
   </div>
-
 </ion-content>

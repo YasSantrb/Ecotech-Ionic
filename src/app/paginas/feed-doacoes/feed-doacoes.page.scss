@@ -1,0 +1,86 @@
+.feed-doacoes-background {
+    --background: url("/assets/imagens/fundo_login_cadastro.jpg") no-repeat center center / cover;
+}
+
+.info {
+    --background: #00bf63a6;
+    color: white;
+    font-weight: bold;
+}
+
+ion-toolbar.info ion-title {
+    color: white;
+}
+
+ion-toolbar.info ion-menu-button {
+    color: white;
+}
+
+.card_menu {
+    padding-bottom: 5px; 
+    background-color: #f7fff7;
+    box-shadow: 0px 5px 11px #00bf63; 
+    border-radius: 20px;
+    margin-top: 15px; 
+    margin-bottom: 20px;
+}
+
+.card-header-content {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+    padding-bottom: 10px;
+}
+
+.titulo {
+    color: #036e3a; 
+    font-size: 1.3em;
+    font-weight: bold;
+    margin: 0;
+    max-width: 65%; 
+}
+
+.condicao-badge {
+    background: #00bf63; 
+    color: white;
+    font-weight: bold;
+    font-size: 0.75em;
+    padding: 4px 8px;
+    border-radius: 12px; 
+    margin: 0;
+    text-transform: uppercase;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.notas {
+    color: #444; 
+    font-size: 0.9em;
+    margin-bottom: 15px;
+    margin-top: 10px;
+}
+
+.imagem {
+    height: 25vh; 
+    overflow: hidden; 
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover; 
+    }
+}
+
+ion-button[fill="outline"] {
+    --border-color: #00bf63; 
+    --color: #00bf63; 
+    --border-width: 2px;
+    border-radius: 20px;
+    font-weight: bold; 
+    transition: 0.3s;
+}
+
+ion-button[fill="outline"]:hover {
+    --background: #00bf631f; 
+}

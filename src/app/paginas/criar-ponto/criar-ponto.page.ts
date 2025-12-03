@@ -4,6 +4,8 @@ import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { PontosService } from 'src/app/services/pontos.service';
 import { IonicModule } from '@ionic/angular';
+import { Auth } from '../../services/auth';
+import { MenuController } from '@ionic/angular';
 
 
 @Component({
@@ -13,7 +15,10 @@ import { IonicModule } from '@ionic/angular';
   standalone: true,
   imports: [CommonModule, FormsModule, IonicModule],
 })
-export class CriarPontoPage {
+export class CriarPontoPage implements OnInit {
+  isDoador: boolean = false;
+  isEmpresa: boolean = false;
+
   rua: string = '';
   bairro: string = '';
   cep: string = '';
@@ -23,8 +28,14 @@ export class CriarPontoPage {
 
   constructor(
     private pontoService: PontosService,
-    private router: Router
+    private router: Router,
+    private authService: Auth,
+    private menuCtrl: MenuController
   ) { }
+
+  ngOnInit(): void {
+    this.verificarFuncaoDoUsuario();
+  }
 
     Criar_pontocoleta() {
     if (!this.rua || !this.bairro || !this.cep || !this.numero || !this.telefone || !this.horario_funcionamento) {
@@ -49,5 +60,16 @@ export class CriarPontoPage {
         alert('Erro ao criar ponto de coleta. Código do erro: ' + err.status);
       }
     });
-}
+  }
+  verificarFuncaoDoUsuario() {
+    const userRole = this.authService.getUserRole(); 
+
+    if (userRole === 'DOADOR') {
+      this.isDoador = true;
+      this.isEmpresa = false;
+    } else if (userRole === 'EMPRESA') {
+      this.isEmpresa = true;
+      this.isDoador = false;
+    }
+  }
 }

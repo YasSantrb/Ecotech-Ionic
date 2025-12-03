@@ -1,5 +1,3 @@
-// src/app/paginas/pontos-coleta/pontos-coleta.page.ts
-
 import { Component, OnInit } from '@angular/core';
 import { IonicModule } from '@ionic/angular';
 import { CommonModule } from '@angular/common';
@@ -7,7 +5,8 @@ import { PontosService } from '../../services/pontos.service';
 import { Router } from '@angular/router';
 import {AlertController} from '@ionic/angular';
 import { FormsModule } from '@angular/forms';
-import {provideIonicAngular} from '@ionic/angular/standalone';
+import { Auth } from '../../services/auth';
+import { Observable } from 'rxjs';
 
 @Component({
   standalone: true,
@@ -24,29 +23,24 @@ export class PontosColetaPage implements OnInit {
   numero: string = '';
   telefone: string = '';
   horario_funcionamento: string = '';
+  isEmpresa: boolean = false;
   
 ngOnInit(): void {
-  this.Get_pontocoleta();
+  this.CarregarPontos();
 }
 
   constructor(
     private router: Router,
     private pontosService: PontosService,
-    private alertController: AlertController) {}
+    private alertController: AlertController,
+    private authService: Auth) {
+      this.checkUserRole();
+    }
 
-
- Get_pontocoleta() {
-    this.pontosService.ListarPontos().subscribe({
-      next: (res) => {
-        this.pontos = res;
-        console.log("Pontos carregados:", res);
-      },
-      error: (err) => console.error("Erro ao buscar pontos:", err)
-    });
-  }
-
-
-
+checkUserRole() {
+        const userRole = this.authService.getUserRole();
+        this.isEmpresa = userRole === 'EMPRESA';
+    }
 
 AbrirDetalhes(item: any) {
   this.router.navigate(['/detalhes-pcoleta'], { state: { item } });
@@ -55,13 +49,36 @@ AbrirDetalhes(item: any) {
     this.router.navigate(['/criar-ponto']);
   }
   ionViewWillEnter() {
+  this.checkUserRole();
   this.CarregarPontos();
 }
 
 CarregarPontos() {
-  this.pontosService.ListarPontos().subscribe((res) => {
-    this.pontos = res;
-  });
-}
+    const userRole = this.authService.getUserRole();
+    let pontosObservable: Observable<any[]>;
+
+    if (userRole === 'EMPRESA') {
+      pontosObservable = this.pontosService.ListarMeusPontos();
+      console.log('Modo Empresa: Listando Meus Pontos');
+    } else if (userRole === 'DOADOR') {
+      pontosObservable = this.pontosService.ListarTodosPontos();
+      console.log('Modo Doador: Listando Todos os Pontos');
+    } else {
+      console.error('Tipo de usuário desconhecido ou não logado.');
+      this.pontos = [];
+      return;
+    }
+
+    pontosObservable.subscribe({
+        next: (data) => {
+            this.pontos = data; 
+            console.log('Pontos de coleta carregados:', this.pontos);
+        },
+        error: (err) => {
+            console.error('Erro ao carregar pontos de coleta:', err);
+            this.pontos = []; 
+        }
+    });
+  }
 
 }
