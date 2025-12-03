@@ -1,13 +1,33 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>detalhes-doacao</ion-title>
+    <ion-title>{{doacao.nome_doacao}}</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">detalhes-doacao</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content>
+
+  <ion-card *ngIf="doacao">
+
+    <img [src]="doacao.foto_url ? doacao.foto_url : placeholder" />
+
+    <ion-card-header>
+      <h2>{{ doacao.nome_doacao }}</h2>
+      <p>Condição: {{ doacao.condicao }}</p>
+    </ion-card-header>
+
+    <ion-card-content>
+      <p><strong>Especificação:</strong> {{ doacao.especificacao || '—' }}</p>
+      <p><strong>Endereço:</strong> {{ doacao.endereco || '—' }}</p>
+      <p><strong>Descrição Geral:</strong> {{ doacao.descricao_geral || '—' }}</p>
+      <p><strong>Observação:</strong> {{ doacao.observacao || '—' }}</p>
+    </ion-card-content>
+
+  </ion-card>
+
+  <!-- Se for dono, mostra botões -->
+  <div *ngIf="isOwner" style="padding: 16px;">
+    <ion-button expand="block" color="primary" (click)="editar()">Editar</ion-button>
+    <ion-button expand="block" color="danger" (click)="excluir()">Excluir</ion-button>
+  </div>
+
 </ion-content>

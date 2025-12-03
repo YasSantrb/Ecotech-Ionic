@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { CriarDoacaoPage } from './paginas/criardoacao/criar-doacao.page';
 
 export const routes: Routes = [
 
@@ -30,14 +31,20 @@ export const routes: Routes = [
   {
     path: 'detalhes-pcoleta',
     loadComponent: () => import('./paginas/detalhes-pcoleta/detalhes-pcoleta.page').then( m => m.DetalhesPcoletaPage)
-  },  {
+  },
+  {
     path: 'feed-doacoes',
     loadComponent: () => import('./paginas/feed-doacoes/feed-doacoes.page').then( m => m.FeedDoacoesPage)
   },
   {
-    path: 'detalhes-doacao',
+    path: 'detalhes-doacao/:id',
     loadComponent: () => import('./paginas/detalhes-doacao/detalhes-doacao.page').then( m => m.DetalhesDoacaoPage)
+  },
+  {
+    path: 'criar-doacao',
+    loadComponent: () => import('./paginas/criardoacao/criar-doacao.page').then( m => m.CriarDoacaoPage)
   }
+
 
 
 

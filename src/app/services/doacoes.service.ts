@@ -23,7 +23,9 @@ export class DoacoesService {
       })
     };
   }
-
+  getDoacaoById(id: number) {
+  return this.http.get<Doacao>(`${this.apiUrl}minhas_doacoes/${id}/`, this.getHeader());
+  }
   ListarDoacoes(): Observable<any[]> {
     return this.http.get<any[]>(`${this.apiUrl}todas_doacoes/`, this.getHeader());
   }

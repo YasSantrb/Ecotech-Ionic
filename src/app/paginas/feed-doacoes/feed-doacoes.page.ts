@@ -15,7 +15,7 @@ import { IonicModule } from '@ionic/angular';
 export class FeedDoacoesPage {
   doacoes: any[] = [];
   loading: boolean = true;
-  placeholder = 'assets/img/placeholder.jpg';
+  placeholder = 'assets/imagens/placeholder.jpg';
 
 
   constructor(
@@ -39,8 +39,12 @@ export class FeedDoacoesPage {
     });
   }
   abrirDetalhes(id: number) {
-this.router.navigate(['/doacoes', id]);
+  this.router.navigate(['detalhes-doacao/', id]);
 }
+  criarDoacao() {
+  this.router.navigate(['/criar-doacao']);
+}
+
 
 
 

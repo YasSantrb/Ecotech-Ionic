@@ -1,0 +1,81 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Criar Doação</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <div class="container">
+
+    <!-- Preview da imagem -->
+    <div class="imagem-container">
+      <img [src]="preview" alt="Prévia da imagem" />
+    </div>
+
+    <ion-item>
+      <input type="file" accept="image/*" (change)="selecionarImagem($event)" />
+    </ion-item>
+
+    <ion-item>
+      <ion-input
+        label="Nome da Doação"
+        labelPlacement="floating"
+        [(ngModel)]="doacao.nome_doacao">
+      </ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-input
+        label="Especificação"
+        labelPlacement="floating"
+        [(ngModel)]="doacao.especificacao">
+      </ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-input
+        label="Endereço"
+        labelPlacement="floating"
+        [(ngModel)]="doacao.endereco">
+      </ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-textarea
+        label="Descrição Geral"
+        labelPlacement="floating"
+        auto-grow
+        [(ngModel)]="doacao.descricao_geral">
+      </ion-textarea>
+    </ion-item>
+
+    <ion-item>
+      <ion-textarea
+        label="Observação"
+        labelPlacement="floating"
+        auto-grow
+        [(ngModel)]="doacao.observacao">
+      </ion-textarea>
+    </ion-item>
+
+    <ion-item>
+      <ion-select
+        label="Condição"
+        labelPlacement="floating"
+        [(ngModel)]="doacao.condicao">
+
+        <ion-select-option value="novo">Novo</ion-select-option>
+        <ion-select-option value="usado">Usado</ion-select-option>
+        <ion-select-option value="para peças">Para peças</ion-select-option>
+
+      </ion-select>
+    </ion-item>
+
+    <ion-button expand="block" color="primary" (click)="salvar()">
+      Salvar Doação
+    </ion-button>
+
+  </div>
+
+</ion-content>
