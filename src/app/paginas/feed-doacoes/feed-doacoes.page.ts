@@ -46,9 +46,6 @@ export class FeedDoacoesPage {
   abrirDetalhes(id: number) {
   this.router.navigate(['detalhes-doacao/', id]);
 }
-  criarDoacao() {
-  this.router.navigate(['/criar-doacao']);
-}
 
 verificarFuncaoDoUsuario() {
     const userRole = this.authService.getUserRole(); 

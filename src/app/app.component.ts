@@ -1,9 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core'; 
 import { Router } from '@angular/router'; 
 import { CommonModule } from '@angular/common';
-import {IonBackButton, IonApp, IonRouterOutlet, IonMenu, IonContent, IonList, IonAvatar, IonMenuToggle, IonItem, IonIcon, IonLabel, IonNote } from '@ionic/angular/standalone';
+import {IonApp, IonRouterOutlet, IonMenu, IonContent, IonList, IonAvatar, IonMenuToggle, IonItem, IonIcon, IonLabel, IonNote } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
-import { gift, location, logOut, giftOutline, locationOutline, logOutOutline, addCircleOutline, businessOutline } from 'ionicons/icons';
+import { gift, location, logOut, giftOutline, locationOutline, logOutOutline, addCircleOutline, businessOutline, chevronUp, chevronUpCircle, add, arrowBack } from 'ionicons/icons';
 import { MenuController } from '@ionic/angular';
 import { Auth } from './services/auth';
 import { Subscription } from 'rxjs';
@@ -13,7 +13,7 @@ import { Subscription } from 'rxjs';
   selector: 'app-root',
   templateUrl: 'app.component.html',
   styleUrl: 'app.component.scss',
-  imports: [CommonModule, IonBackButton, IonApp, IonRouterOutlet, IonMenu, IonContent, IonList, IonAvatar, IonMenuToggle, IonItem, IonIcon, IonLabel, IonNote], 
+  imports: [CommonModule, IonApp, IonRouterOutlet, IonMenu, IonContent, IonList, IonAvatar, IonMenuToggle, IonItem, IonIcon, IonLabel, IonNote], 
   standalone: true 
 })
 export class AppComponent implements OnInit, OnDestroy { 
@@ -33,7 +33,7 @@ export class AppComponent implements OnInit, OnDestroy {
     private router: Router, 
     private menuCtrl: MenuController,
   ) {
-    addIcons({gift, location, logOut, giftOutline, locationOutline, logOutOutline, addCircleOutline, businessOutline});
+    addIcons({gift, location, logOut, giftOutline, locationOutline, logOutOutline, addCircleOutline, businessOutline, chevronUp, chevronUpCircle, add, arrowBack});
   }
   ionViewWillEnter() {
   this.verificarFuncaoDoUsuario();

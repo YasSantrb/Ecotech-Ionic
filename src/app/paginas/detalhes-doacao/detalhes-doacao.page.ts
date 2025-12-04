@@ -5,6 +5,8 @@ import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DoacoesService } from '../../services/doacoes.service';
 import { AlertController, ToastController } from '@ionic/angular';
+import { Auth } from 'src/app/services/auth';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-detalhes-doacao',
@@ -18,30 +20,58 @@ import { AlertController, ToastController } from '@ionic/angular';
 export class DetalhesDoacaoPage implements OnInit {
 
   doacao: any = null;
-  userId: number = 1; // pega do storage futuramente
+  userId: number | null = null; 
   isOwner: boolean = false;
   placeholder = 'assets/imagens/placeholder.jpg';
+  isDoador: boolean = false;
 
   constructor(
     private route: ActivatedRoute,
     private doacoesService: DoacoesService,
     private router: Router,
-    private alertController: AlertController, // Adicione este
-    private toastController: ToastController // Adicione este
-    ) {}
+    private alertController: AlertController, 
+    private toastController: ToastController, 
+    private navController: NavController,
+    private authService: Auth
+    ) {
+      this.checkUserRole();
+      const idUsuarioString = this.authService.getIdUsuario();
+      if (idUsuarioString) {
+          this.userId = Number(idUsuarioString);
+      } else {
+          this.userId = null;
+      }
+    }
+    
+
+    checkUserRole() {
+        const userRole = this.authService.getUserRole();
+        this.isDoador = userRole === 'DOADOR';
+    }
+
+    voltar() {
+      this.navController.back();
+    }
+
+    
 
   ngOnInit() {
     const id = Number(this.route.snapshot.paramMap.get('id'));
 
     this.doacoesService.getDoacaoById(id).subscribe((data) => {
       this.doacao = data;
-      this.isOwner = this.doacao?.usuario_id === this.userId; 
+       if (this.userId !== null) { 
+         this.isOwner = Number(this.doacao?.usuario) === this.userId;
+       }
     });
   }
 
-  editar() {
-    this.router.navigate(['/editar-doacao', this.doacao.id]);
+  editarDoacao() {
+    this.router.navigate(['/editar-doacao', this.doacao.id], {
+      state: {item: this.doacao}
+    });
   }
+  
 
   async presentToast(message: string, color: string = 'primary') {
     const toast = await this.toastController.create({
@@ -53,7 +83,7 @@ export class DetalhesDoacaoPage implements OnInit {
     await toast.present();
   }
   
-  async excluir() {
+  async excluirDoacao() {
     const alert = await this.alertController.create({
       header: 'Confirmação',
       message: 'Tem certeza que deseja excluir esta doação? Esta ação não pode ser desfeita.',
@@ -80,7 +110,7 @@ export class DetalhesDoacaoPage implements OnInit {
     this.doacoesService.DeletarDoacao(this.doacao.id).subscribe({
       next: () => {
         this.presentToast('Doação excluída com sucesso!', 'success');
-        this.router.navigate(['/feed-doacoes']); 
+        this.router.navigate(['/informacoes-doacoes']); 
       },
       error: (err) => {
         this.presentToast('Erro ao excluir a doação.', 'danger');

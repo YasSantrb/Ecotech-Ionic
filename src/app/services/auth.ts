@@ -14,6 +14,7 @@ export class Auth {
   private roleKey = "user-role";
   private nomeUsuario = "user-name";
   private emailUsuario = "user-email";
+  private idUsuario = "user-id";
   private authState = new Subject<void>();
   authState$ = this.authState.asObservable();
   constructor(private http : HttpClient) {};
@@ -39,11 +40,18 @@ login(credentials: any): Observable<any>{
       if (res.email) { 
         localStorage.setItem(this.emailUsuario, res.email); 
       }
+
+      if (res.usuario_id) { 
+        localStorage.setItem(this.idUsuario, res.usuario_id); 
+      }
       this.authState.next();
     })
   )
 };
 
+getIdUsuario(): string | null {
+  return localStorage.getItem(this.idUsuario);
+}
 getNomeUsuario(): string | null {
    return localStorage.getItem(this.nomeUsuario);
   }
@@ -64,6 +72,7 @@ logout(): void{
   localStorage.removeItem(this.roleKey);
   localStorage.removeItem(this.nomeUsuario); 
   localStorage.removeItem(this.emailUsuario);
+  localStorage.removeItem(this.idUsuario)
   this.authState.next();
 }
 isLoggedIn(): boolean {

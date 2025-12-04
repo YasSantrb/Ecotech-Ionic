@@ -1,10 +1,12 @@
 <ion-header>
-    <ion-toolbar>
-      <ion-buttons slot="start">
-        <ion-back-button text="Voltar" default-href="/feed-doacoes"></ion-back-button>
-      </ion-buttons>
-    </ion-toolbar>
-  </ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button class="botao" (click)="voltar()"> <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+        <ion-text class="botao">Voltar</ion-text>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
 
 <ion-content>
   <ion-card *ngIf="doacao">
@@ -23,14 +25,15 @@
       </p>
       <p><strong>Observação:</strong> {{ doacao?.observacao || '—' }}</p>
     </ion-card-content>
-  </ion-card>
 
-  <div *ngIf="isOwner" style="padding: 16px">
-    <ion-button expand="block" color="primary" (click)="editar()"
-      >Editar</ion-button
-    >
-    <ion-button expand="block" color="danger" (click)="excluir()"
-      >Excluir</ion-button
-    >
-  </div>
+    <div *ngIf="isDoador && isOwner" style="padding: 16px">
+    <ion-button (click)="editarDoacao()">
+        Editar
+    </ion-button>
+
+    <ion-button (click)="excluirDoacao()">
+        Excluir
+    </ion-button>
+</div>
+  </ion-card>
 </ion-content>

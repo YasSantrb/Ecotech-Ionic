@@ -44,7 +44,7 @@ export class CadastroPage {
       .subscribe({
         next: (res) => {
           console.log('Cadastrado!',res);
-          this.router.navigate(['/home'])
+          this.router.navigate(['/feed-doacoes'])
         }
       })
 

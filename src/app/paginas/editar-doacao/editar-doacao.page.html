@@ -1,0 +1,94 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text="Voltar"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Editar Doação</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="container">
+    <div class="imagem-container">
+      <img [src]="preview" alt="Prévia da imagem" />
+    </div>
+
+    <ion-item>
+      <input type="file" accept="image/*" (change)="selecionarImagem($event)" />
+    </ion-item>
+
+    <ion-item>
+      <ion-input
+        label="Nome da Doação"
+        labelPlacement="floating"
+        name="nomeDoacao"
+        [(ngModel)]="doacao.nome_doacao">
+      </ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-input
+        label="Especificação"
+        labelPlacement="floating"
+        name="especificacao"
+        [(ngModel)]="doacao.especificacao">
+      </ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-input
+        label="Endereço"
+        labelPlacement="floating"
+        name="endereco"
+        [(ngModel)]="doacao.endereco">
+      </ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-textarea
+        label="Descrição Geral"
+        labelPlacement="floating"
+        auto-grow
+        name="descricaoGeral"
+        [(ngModel)]="doacao.descricao_geral">
+      </ion-textarea>
+    </ion-item>
+
+    <ion-item>
+      <ion-textarea
+        label="Observação"
+        labelPlacement="floating"
+        auto-grow
+        name="observacao"
+        [(ngModel)]="doacao.observacao">
+      </ion-textarea>
+    </ion-item>
+
+    <ion-item>
+      <ion-select
+        label="Condição"
+        labelPlacement="floating"
+        name="condicao"
+        [(ngModel)]="doacao.condicao">
+        
+        <ion-select-option value="NOVO">Novo</ion-select-option>
+        <ion-select-option value="USADO">Usado</ion-select-option>
+        <ion-select-option value="PARA PEÇAS">Para peças</ion-select-option>
+
+      </ion-select>
+    </ion-item>
+    <ion-button expand="block" color="primary" (click)="SalvarAlteracoes()">
+      Salvar Alterações
+    </ion-button>
+
+    <ion-button
+      expand="block"
+      color="danger" 
+      fill="clear"
+      (click)="Cancelaredicao()"
+    >
+      Cancelar Edição
+    </ion-button>
+
+  </div>
+</ion-content>

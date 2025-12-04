@@ -43,9 +43,14 @@ export const routes: Routes = [
   {
     path: 'criar-doacao',
     loadComponent: () => import('./paginas/criardoacao/criar-doacao.page').then( m => m.CriarDoacaoPage)
+  },
+  {
+    path: 'informacoes-doacoes',
+    loadComponent: () => import('./paginas/informacoes-doacoes/informacoes-doacoes.page').then( m => m.InformacoesDoacoesPage)
+  },
+  {
+    path: 'editar-doacao/:id',
+    loadComponent: () => import('./paginas/editar-doacao/editar-doacao.page').then( m => m.EditarDoacaoPage)
   }
-
-
-
 
 ];

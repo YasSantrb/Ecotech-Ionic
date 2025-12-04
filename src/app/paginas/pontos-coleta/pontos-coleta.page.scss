@@ -122,17 +122,14 @@ tr:last-child td {
     text-transform: none !important;
   }
 
-  /* Botão excluir vermelho */
   button.alert-button.role-destructive {
     color: #e03131 !important;
   }
 
-  /* Botão editar azul */
   button.alert-button:not(.role-destructive):not(.role-cancel) {
     color: #0b83ff !important;
   }
 
-  /* Botão fechar cinza */
   button.alert-button.role-cancel {
     color: #555 !important;
   }

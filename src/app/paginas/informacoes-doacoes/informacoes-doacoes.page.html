@@ -1,0 +1,47 @@
+<div class="ion-page">
+  <ion-header>
+    <ion-toolbar class="info">
+      <ion-buttons slot="start">
+        <ion-menu-button menu="main-menu"></ion-menu-button>
+      </ion-buttons>
+      <ion-title>Minhas Doações</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+<ion-content class="feed-doacoes-background">
+  <ion-card *ngFor="let doacao of doacoes" class="card_menu">
+      <div class="imagem">
+        <img [src]="doacao.foto_url || placeholder" alt="Foto da Doação" />
+      </div>
+
+      <ion-card-header>
+        <div class="card-header-content">
+          <h2 class="titulo">{{ doacao.nome_doacao }}</h2>
+          <p class="condicao-badge">{{ doacao.condicao || 'Não Informada' }}</p>
+        </div>
+      </ion-card-header>
+
+      <ion-card-content>
+        <ion-button
+          class="botao"
+          expand="block"
+          fill="outline"
+          (click)="verDetalhes(doacao.id)"
+        >
+          Veja mais sobre
+        </ion-button>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-fab slot="fixed" vertical="bottom" horizontal="end">
+    <ion-fab-button class="botao_fixo">
+      <ion-icon class="icones_botao_fixo" name="chevron-up-circle"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-list side="top">
+      <ion-fab-button (click)="criarDoacao()">
+        <ion-icon class="mini_botao" name="add"></ion-icon>
+      </ion-fab-button>
+    </ion-fab-list>
+  </ion-fab>
+</ion-content>
+</div>
