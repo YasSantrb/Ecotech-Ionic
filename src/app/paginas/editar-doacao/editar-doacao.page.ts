@@ -1,16 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { IonContent, IonHeader, IonTitle, IonToolbar, IonItem, IonSelectOption, IonButton, IonInput, IonSelect, IonTextarea, IonBackButton, IonButtons} from '@ionic/angular/standalone';
+import { IonContent, IonHeader, IonTitle, IonToolbar, IonItem, IonSelectOption, IonButton, IonInput, IonSelect, IonTextarea, IonBackButton, IonButtons, IonIcon} from '@ionic/angular/standalone';
 import { Router } from '@angular/router';
 import { DoacoesService } from '../../services/doacoes.service';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-editar-doacao',
   templateUrl: './editar-doacao.page.html',
   styleUrls: ['./editar-doacao.page.scss'],
   standalone: true,
-  imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, IonItem, IonSelectOption, IonButton, IonInput, IonSelect, IonTextarea, IonBackButton, IonButtons]
+  imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, IonItem, IonSelectOption, IonButton, IonInput, IonSelect, IonTextarea, IonBackButton, IonButtons, IonIcon]
 })
 export class EditarDoacaoPage implements OnInit {
   ngOnInit(): void {
@@ -43,7 +44,8 @@ doacao: any = {
 
   constructor(
     private service: DoacoesService,
-    private router: Router
+    private router: Router,
+    private navController: NavController,
   ) {}
 
   
@@ -68,7 +70,9 @@ doacao: any = {
 
     this.service.AtualizarDoacao(this.doacao.id, this.doacao).subscribe({ 
       next: () => {
-        this.router.navigate(['/detalhes-doacao', this.doacao.id]);
+        this.router.navigate(['/detalhes-doacao', this.doacao.id], { 
+            replaceUrl: true 
+        });
       },
       error: err => {
         console.error('Erro ao salvar alteração da doação', err);
@@ -79,5 +83,8 @@ doacao: any = {
  Cancelaredicao() {
     this.editando = false;
     this.doacao = { ...this.doacaobackup };
+    this.router.navigate(['/detalhes-doacao', this.doacao.id], { 
+        replaceUrl: true 
+    });
   }
 }

@@ -1,7 +1,10 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button text="Voltar"></ion-back-button>
+      <ion-button (click)="Cancelaredicao()">
+        <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+        Voltar
+      </ion-button>
     </ion-buttons>
     <ion-title>Editar Doação</ion-title>
   </ion-toolbar>
@@ -81,14 +84,14 @@
       Salvar Alterações
     </ion-button>
 
-    <ion-button
+    <!-- <ion-button
       expand="block"
       color="danger" 
       fill="clear"
       (click)="Cancelaredicao()"
     >
       Cancelar Edição
-    </ion-button>
+    </ion-button> -->
 
   </div>
 </ion-content>
