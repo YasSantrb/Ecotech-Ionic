@@ -1,0 +1,76 @@
+ion-header {
+  ion-toolbar {
+    --background: #0b8e2d;
+    --color: #ffffff;
+    font-weight: bold;
+  }
+}
+ion-content {
+  --background: url("/assets/imagens/fundo_login_cadastro.jpg");
+}
+.container {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.imagem-container {
+  width: 100%;
+  height: 28vh;
+  background: #e9ffe9;
+  border: 2px dashed #00bf63;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+.imagem-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+ion-item {
+  --background: #ffffff;
+  border-radius: 14px;
+  margin-bottom: 8px;
+  box-shadow: 0px 4px 10px #00bf632a;
+  --padding-start: 10px;
+}
+ion-input,
+ion-textarea,
+ion-select {
+  color: #036e3a;
+  font-weight: 500;
+  
+}
+ion-item ion-label {
+  color: #036e3a;
+  
+}
+input[type="file"] {
+  font-size: 0.9em;
+  padding: 10px 0;
+  color: #036e3a;
+  
+}
+ion-button {
+  --background: #00bf63 !important;
+  --background-hover: #00d66f !important;
+  --background-activated: #00bf63 !important;
+  --background-focused: #00bf63 !important;
+  --ripple-color: transparent !important;
+    color: #fff !important;
+    border-radius: 15px;
+    font-weight: bold;
+    height: 48px;
+    margin-top: 20px;
+    box-shadow: 0px 4px 10px rgba(0, 191, 99, 0.4);
+    transition: 0.2s ease-in-out;
+}
+ion-button:hover {
+  transform: scale(1.02);
+}
+ion-button:active {
+  transform: scale(0.97);
+}
