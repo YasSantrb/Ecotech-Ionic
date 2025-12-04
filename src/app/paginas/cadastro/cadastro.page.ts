@@ -4,6 +4,9 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { Auth } from 'src/app/services/auth';
 import { Router } from '@angular/router';
+import { switchMap, tap } from 'rxjs';
+import { catchError } from 'rxjs/operators';
+import { of } from 'rxjs';
 
 
 
@@ -33,6 +36,10 @@ export class CadastroPage {
       alert('Preencha todos os campos!');
       return;
     }
+    if (this.password !== this.confirmPassword) {
+      alert('As senhas não coincidem!');
+      return;
+    }
     this.auth.cadastro({
       username: this.username,
       email: this.email,
@@ -42,15 +49,32 @@ export class CadastroPage {
       cep: this.cep,
       cpf_cnpj: this.cpfCnpj,
       telefone: this.telefone
-    }})
+    }}).pipe(
+      tap(() => console.log('Cadastro bem-sucedido. Iniciando login...')),      
+      switchMap(() => {
+        return this.auth.login({ 
+          email: this.email, 
+          password: this.password 
+        });
+      }),catchError((error) => {
+        console.error('Erro no fluxo de Cadastro/Login:', error);
+        alert('Falha ao cadastrar ou logar. Verifique os dados.');
+        return of(null);
+      })
+        )
       .subscribe({
         next: (res) => {
+
           console.log('Cadastrado!',res);
           this.auth.login({
             email:this.email,
             password:this.password
           })
           this.router.navigate(['/feed-doacoes'])
+        },
+        error: (err) => {
+          console.log('Erro no Cadastro', err);
+          alert('Erro ao fazer cadastro. Código do erro: ' + err.status);
         }
       })
 
@@ -62,6 +86,7 @@ export class CadastroPage {
     console.log('CEP:', this.cep);
     console.log('CPF/CNPJ:', this.cpfCnpj);
     console.log('Telefone:', this.telefone);
+
 
   }
 }

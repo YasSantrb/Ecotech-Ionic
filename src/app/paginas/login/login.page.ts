@@ -30,14 +30,8 @@ export class LoginPage {
       email: this.email, 
       password: this.password })
       .subscribe({
-      next: (res) => {
-      console.log('Logado!', res);
-      this.router.navigate(['/feed-doacoes']);
-    },
-    error: (err) => {
-      console.log('Deu ruim', err);
-      alert('Erro ao fazer login. Código do erro: ' + err.status);
-    },
+      next: () => {},
+      error: () => {},
   });
   
   
