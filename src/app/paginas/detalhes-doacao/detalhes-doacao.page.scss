@@ -1,13 +1,63 @@
 ion-header {
   background-color: #00bf63;
 }
+.background_detalhes{
+  --background: url("/assets/imagens/fundo_login_cadastro.jpg");
 
+}
+
+.card-principal{
+  background: white;
+  color:black;
+  box-shadow: 0 4px 15px #00bf63;
+}
+
+p{
+  color: black;
+  font-weight: bolder;
+  font-size: medium;
+}
+
+h2{
+  color: #00bf63;
+  font-weight: bolder;
+}
 ion-toolbar {
   --background: transparent;
   --border-color: transparent;
 }
 
-.botao {
-  --color: #ffffff;
+.botao{
+  color: white;
+  background: #00bf63;
+  border-bottom: 4px solid #036e3a;
+  border-radius: 20px;
+  font-weight: bold;  
+}
+.botao:hover{
+  transition: 0.3s;
+  background: #036e3a;
+}
+
+.botao_excluir{
+  color: white;
+  background: #ff0000;
+  border-bottom: 4px solid #5f0202;
+  border-radius: 20px;
+  font-weight: bold; 
+}
+.botao_excluir:hover{
+  transition: 0.3s;
+  background: #5f0202;
+}
+
+.botao_voltar{
+  color: white;
+}
+ion-icon{
+  color:white;
+}
+
+.botao_voltar_header{
   font-size: 20px;
 }

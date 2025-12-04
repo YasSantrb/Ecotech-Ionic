@@ -11,19 +11,10 @@ export const routes: Routes = [
     path: 'registro',
     loadComponent: () => import('./paginas/cadastro/cadastro.page').then( m => m.CadastroPage)
   },
-  // {
-  //   path: 'home',
-  //   loadComponent: () => import('./paginas/home/home.page').then( m => m.HomePage)
-  // },
   {
     path: 'pontos-coleta',
     loadComponent: () => import('./paginas/pontos-coleta/pontos-coleta.page').then( m => m.PontosColetaPage)
   },
-
-  // {
-  //   path: 'pontos-coleta',
-  //   loadComponent: () =>import('./paginas/pontos-coleta/pontos-coleta.page').then(m => m.PontosColetaPage)
-  // },
   {
     path: 'criar-ponto',
     loadComponent: () => import('./paginas/criar-ponto/criar-ponto.page').then( m => m.CriarPontoPage)
