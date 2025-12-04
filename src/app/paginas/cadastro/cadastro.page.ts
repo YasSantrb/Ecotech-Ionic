@@ -5,6 +5,8 @@ import { IonicModule } from '@ionic/angular';
 import { Auth } from 'src/app/services/auth';
 import { Router } from '@angular/router';
 
+
+
 @Component({
   selector: 'app-cadastro',
   standalone: true,
@@ -44,6 +46,10 @@ export class CadastroPage {
       .subscribe({
         next: (res) => {
           console.log('Cadastrado!',res);
+          this.auth.login({
+            email:this.email,
+            password:this.password
+          })
           this.router.navigate(['/feed-doacoes'])
         }
       })

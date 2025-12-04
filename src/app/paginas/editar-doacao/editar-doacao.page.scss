@@ -1,0 +1,36 @@
+ion-header {
+  background-color: #00bf63;
+}
+
+ion-toolbar {
+  --background: transparent;
+  --border-color: transparent;
+}
+ion-content{
+    --background: url("/assets/imagens/fundo_login_cadastro.jpg");
+}
+.botao_voltar{
+  color: white;
+}
+ion-item{
+    --background: white;
+    color:black;
+    font-weight: bolder;
+}
+ion-icon{
+    color:white
+}
+ion-button{
+    color:white
+}
+.botao{
+  color: white;
+  background: #00bf63;
+  border-bottom: 4px solid #036e3a;
+  border-radius: 20px;
+  font-weight: bold;  
+}
+.botao:hover{
+  transition: 0.3s;
+  background: #036e3a;
+}

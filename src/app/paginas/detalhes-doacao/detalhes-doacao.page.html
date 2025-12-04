@@ -1,15 +1,15 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-button class="botao" (click)="voltar()"> <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
-        <ion-text class="botao">Voltar</ion-text>
+      <ion-button class="botao_voltar" (click)="voltar()"> <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+        <ion-text class="botao_voltar">Voltar</ion-text>
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <ion-card *ngIf="doacao">
+<ion-content class="background_detalhes">
+  <ion-card *ngIf="doacao" class="card-principal">
     <img [src]="doacao.foto_url ? doacao.foto_url : placeholder" />
 
     <ion-card-header>
@@ -27,13 +27,9 @@
     </ion-card-content>
 
     <div *ngIf="isDoador && isOwner" style="padding: 16px">
-    <ion-button (click)="editarDoacao()">
-        Editar
-    </ion-button>
+    <ion-button class="botao" color="null"  (click)="editarDoacao()">Editar</ion-button>
 
-    <ion-button (click)="excluirDoacao()">
-        Excluir
-    </ion-button>
+    <ion-button class="botao_excluir" color="null" (click)="excluirDoacao()">Excluir</ion-button>
 </div>
   </ion-card>
 </ion-content>
