@@ -51,11 +51,11 @@ private handleAuthSuccess(res: any): void {
       tap((res:any) => {
         console.log('Logado!', res);
         this.handleAuthSuccess(res);
-        this.router.navigate(['/feed-doacoes']); // <--- A navegação está aqui!
+        this.router.navigate(['/feed-doacoes']); 
       }),
       catchError(err => {
         console.log('Erro no Login (Auth.ts)', err);
-        alert('Erro ao fazer login. Código do erro: ' + err.status); // <--- O tratamento de erro está aqui!
+        alert('Erro ao fazer login. Código do erro: ' + err.status); 
         return throwError(() => err);})
     );
   }

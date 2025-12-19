@@ -37,9 +37,9 @@ export class CadastroPage {
       return;
     }
     if (this.password !== this.confirmPassword) {
-      alert('As senhas não coincidem!');
-      return;
-    }
+      alert('As senhas não coincidem!');
+      return;
+    }
     this.auth.cadastro({
       username: this.username,
       email: this.email,
@@ -50,7 +50,7 @@ export class CadastroPage {
       cpf_cnpj: this.cpfCnpj,
       telefone: this.telefone
     }}).pipe(
-      tap(() => console.log('Cadastro bem-sucedido. Iniciando login...')),      
+      tap(() => console.log('Cadastro bem-sucedido. Iniciando login...')),
       switchMap(() => {
         return this.auth.login({ 
           email: this.email, 
