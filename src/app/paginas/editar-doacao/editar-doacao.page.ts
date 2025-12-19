@@ -48,37 +48,47 @@ doacao: any = {
     private navController: NavController,
   ) {}
 
-  
+  fotoSelecionada: File | null = null;
 
-  selecionarImagem(event: any) {
-    const file = event.target.files[0];
-    if (!file) return;
+selecionarImagem(event: any) {
+  const file = event.target.files[0];
+  if (!file) return;
 
-    const reader = new FileReader();
-    reader.onload = () => {
-      this.preview = reader.result as string;
-      this.doacao.foto_url = this.preview;
-    };
-    reader.readAsDataURL(file);
+  this.fotoSelecionada = file; 
+
+  const reader = new FileReader();
+  reader.onload = () => {
+    this.preview = reader.result as string;
+  };
+  reader.readAsDataURL(file);
+}
+
+SalvarAlteracoes() {
+  if (!this.doacao.nome_doacao || !this.doacao.condicao) {
+    alert('Preencha pelo menos Nome e Condição.');
+    return;
+  }
+  const formData = new FormData();
+  formData.append('nome_doacao', this.doacao.nome_doacao);
+  formData.append('especificacao', this.doacao.especificacao);
+  formData.append('endereco', this.doacao.endereco);
+  formData.append('descricao_geral', this.doacao.descricao_geral);
+  formData.append('observacao', this.doacao.observacao);
+  formData.append('condicao', this.doacao.condicao);
+
+  if (this.fotoSelecionada) {
+    formData.append('fotos_eletronico', this.fotoSelecionada);
   }
 
-  SalvarAlteracoes() {
-    if (!this.doacao.nome_doacao || !this.doacao.condicao) {
-      alert('Preencha pelo menos Nome e Condição.');
-      return;
+  this.service.AtualizarDoacao(this.doacao.id, formData).subscribe({ 
+    next: () => {
+      this.router.navigate(['/detalhes-doacao', this.doacao.id], { replaceUrl: true });
+    },
+    error: err => {
+      console.error('Erro ao salvar alteração da doação', err);
     }
-
-    this.service.AtualizarDoacao(this.doacao.id, this.doacao).subscribe({ 
-      next: () => {
-        this.router.navigate(['/detalhes-doacao', this.doacao.id], { 
-            replaceUrl: true 
-        });
-      },
-      error: err => {
-        console.error('Erro ao salvar alteração da doação', err);
-      }
-    });
-  }
+  });
+}
 
  Cancelaredicao() {
     this.editando = false;
